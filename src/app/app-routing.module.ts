@@ -6,15 +6,17 @@ import { CartComponent } from './component/cart/cart.component';
 import { CheckoutSuccessComponent } from './component/checkout-success/checkout-success.component';
 
 const routes: Routes = [
-  {path: '', component: ProductListComponent},
-  {path: 'item-detail/:id', component: ProductItemDetailComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'success/:firstName/:totalPrice', component: CheckoutSuccessComponent}
-
+  { path: '', component: ProductListComponent },
+  { path: 'order_details/:id', component: ProductItemDetailComponent },
+  { path: 'order', component: CartComponent },
+  {
+    path: 'success/:firstName/:total',
+    component: CheckoutSuccessComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
