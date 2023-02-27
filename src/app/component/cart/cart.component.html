@@ -1,33 +1,48 @@
-<div *ngIf="cartProducts.length; else noCart" class="cart-container">
-    <div class="cart-item-details">
-        <div *ngFor="let cartProduct of cartProducts" class="cart-item">
-            <img class="" src='{{cartProduct.url}}'>
-            <div class="cart-panel">
-                <div class="product-item-detail">{{ cartProduct.name}}</div>
-                <div class="product-item-detail">$ {{ cartProduct.price}}</div>
-                <div class="product-item-detail">
-                    <select (change)="selectChange(cartProduct.id, $event)"  style="width: 100px;"  class="form-select" aria-label="Default select example">
-                        <option 
-                            *ngFor="let product_option of productCount" 
-                            [ngValue]="product_option"
-                            [selected]="cartProduct.option === product_option">
-                            {{ product_option }}
-                        </option>
-                    </select>     
-                </div>
-                <div class="product-item-detail">
-                    <button (click)="removeCart(cartProduct.id)"  class="product-item-detail btn btn-primary">Remove</button>
-                </div>
-            </div>
+<main *ngIf="cartProduct.length; else noCart" class="cart-container">
+  <div class="cart-item-details">
+    <div *ngFor="let cartProduct of cartProduct" class="cart-item">
+      <img class="" src="{{ cartProduct.url }}" />
+      <div class="cart-panel">
+        <div class="product-item-detail">{{ cartProduct.name }}</div>
+        <div class="product-item-detail">$ {{ cartProduct.price }}</div>
+        <div class="product-item-detail">
+          <select
+            (change)="selectChange(cartProduct.id, $event)"
+            style="width: 100px"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option
+              *ngFor="let product_option of productNumberr"
+              [ngValue]="product_option"
+              [selected]="cartProduct.option === product_option"
+            >
+              {{ product_option }}
+            </option>
+          </select>
         </div>
-        <div class="cart-item"><b>Total Price: ${{ totalPrice }}</b></div>
+        <div class="product-item-detail">
+          <button
+            (click)="removeCart(cartProduct.id)"
+            class="product-item-detail btn btn-primary"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="form-margin">
-            <app-create-form (checkoutSuccess)="checkoutSuccess($event)"></app-create-form>
+    <div class="cart-item">
+      <b>Total Price: ${{ totalPrice }}</b>
     </div>
-</div>
+  </div>
+  <div class="form-margin">
+    <app-create-form
+      (checkoutSuccess)="checkoutSuccess($event)"
+    ></app-create-form>
+  </div>
+</main>
 <ng-template #noCart>
-    <div class="empty-cart-message">
-    Cart is Empty! Please, <a routerLink="/"> add product to cart</a>. 
-    </div>
+  <div class="empty-cart-message">
+    Cart is Empty! Please, <a routerLink="/"> add product to cart</a>.
+  </div>
 </ng-template>

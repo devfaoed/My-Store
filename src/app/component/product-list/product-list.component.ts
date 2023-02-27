@@ -1,62 +1,61 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, productCount } from '../../model/Product';
+import { Product, productNumber } from '../../model/Product';
 import { CartProduct } from '../../model/cart_prooduct';
-import { ProductService } from '../../services/product.service';
+import { productervice } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  products: Product[] = [];
-  productCount: string[] = productCount;
+  product: Product[] = [];
+  productNumber: string[] = productNumber;
 
-  constructor(private productService: ProductService ) { }
+  constructor(private productervice: productervice) {}
 
   ngOnInit(): void {
-    this.productService.getProduct().subscribe(res =>{
-      this.products = res;
-    })
-
+    this.productervice.getProduct().subscribe((res) => {
+      this.product = res;
+    });
   }
-  onSubmit(cartProduct: Product, event: any): boolean{
+  onSubmit(cartProduct: Product, event: any): boolean {
     let newCartProduct: CartProduct[] = [];
     let message: string = '';
     let isCartOptionExist: boolean = false;
 
-    const selectedOption = event.target[0].options[event.target[0].options.selectedIndex].value;
-    const cartProducts: CartProduct[] | [] = this.productService.getCartProduct();
+    const selectedOption =
+      event.target[0].options[event.target[0].options.selectedIndex].value;
+    const cartProduct: CartProduct[] | [] = this.productervice.getCartProduct();
 
-    const cartIdx = cartProducts.findIndex(cart => cart.id === cartProduct.id)
-    newCartProduct = cartProducts;
+    const cartIdx = cartProduct.findIndex((cart) => cart.id === cartProduct.id);
+    newCartProduct = cartProduct;
 
-    if((cartIdx === -1) || (cartProducts.length === 0)){
-      newCartProduct.push(Object.assign(cartProduct, {option: selectedOption}))
+    if (cartIdx === -1 || cartProduct.length === 0) {
+      newCartProduct.push(
+        Object.assign(cartProduct, { option: selectedOption })
+      );
       message = `New Item '${cartProduct.name}' added to cart`;
-    } else{
+    } else {
       const option: string = newCartProduct[cartIdx].option;
-      isCartOptionExist = selectedOption === option
+      isCartOptionExist = selectedOption === option;
 
-      if (isCartOptionExist){
+      if (isCartOptionExist) {
         message = `${option} Item(s) of '${cartProduct.name}' already exist in cart.`;
-      }else{
+      } else {
         newCartProduct[cartIdx].id = cartProduct.id;
         newCartProduct[cartIdx].option = selectedOption;
         message = `${option} Item(s) of '${cartProduct.name}' already exist in cart. Will be updated to ${selectedOption}`;
       }
-      
     }
-    !isCartOptionExist? this.productService.addToCart(newCartProduct): null;
+    !isCartOptionExist ? this.productervice.addToCart(newCartProduct) : null;
 
     alert(message);
 
     this.printLocalData(); // for debugging
     return false;
   }
-  printLocalData(): void{
-    console.log(this.productService.getCartProduct())
+  printLocalData(): void {
+    console.log(this.productervice.getCartProduct());
   }
-
-
 }

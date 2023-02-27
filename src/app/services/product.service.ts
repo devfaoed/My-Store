@@ -6,25 +6,24 @@ import { Product } from '../model/Product';
 import { CartProduct } from '../model/cart_prooduct';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ProductService {
+export class productervice {
   myStorage = window.localStorage;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getProduct(): Observable<Product[]>{
+  getProduct(): Observable<Product[]> {
     return this.http.get<Product[]>('http://localhost:4200/assets/data.json');
   }
-  addToCart(product: CartProduct[]): void{
+  addToCart(product: CartProduct[]): void {
     this.myStorage.setItem('cart', JSON.stringify(product));
   }
-  getCartProduct(): CartProduct[] | []{
-    const getProduct = this.myStorage.getItem('cart')
-    return getProduct? JSON.parse(getProduct): [];
+  getCartProduct(): CartProduct[] | [] {
+    const getProduct = this.myStorage.getItem('cart');
+    return getProduct ? JSON.parse(getProduct) : [];
   }
-  clearCart(): void{
+  clearCart(): void {
     this.myStorage.clear();
   }
-  
 }
