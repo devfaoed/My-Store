@@ -1,5 +1,5 @@
 {
-  "name": "foodmine-course",
+  "name": "My Store",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,7 +9,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~11.0.6",
     "@angular/common": "~11.0.6",
