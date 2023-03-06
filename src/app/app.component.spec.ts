@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'udacity-MyStore'`, () => {
+  it(`should have as title 'foodmine-course'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('udacity-MyStore');
+    expect(app.title).toEqual('foodmine-course');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('udacity-MyStore app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('foodmine-course app is running!');
   });
 });

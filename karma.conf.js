@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/udacity-MyStore'),
+      dir: require('path').join(__dirname, './coverage/foodmine-course'),
       subdir: '.',
       reporters: [
         { type: 'html' },

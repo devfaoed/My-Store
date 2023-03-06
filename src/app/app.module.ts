@@ -1,37 +1,33 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './component/product-list/product-list.component';
-import { HeaderComponent } from './component/header/header.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductItemDetailComponent } from './component/product-item-detail/product-item-detail.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
-import { CartComponent } from './component/cart/cart.component';
-import { CreateFormComponent } from './component/create-form/create-form.component';
-import { CheckoutSuccessComponent } from './component/checkout-success/checkout-success.component';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import {RatingModule} from 'ng-starrating';
+import { SearchComponent } from './search/search.component';
+import {FormsModule} from '@angular/forms';
+import { TagsComponent } from './tags/tags.component';
+import { FoodPageComponent } from './food-page/food-page.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
     HeaderComponent,
-    ProductItemDetailComponent,
-    NavbarComponent,
-    CartComponent,
-    CreateFormComponent,
-    CheckoutSuccessComponent
+    HomeComponent,
+    SearchComponent,
+    TagsComponent,
+    FoodPageComponent,
+    CartPageComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
-    FlexLayoutModule,
-    HttpClientModule,
+    RatingModule,
     FormsModule
   ],
   providers: [],
