@@ -1,4 +1,4 @@
-##  Lessons
+##  Intro 
 1. Introduciton to the course
 2. Install development tools
 3. Create Angular App
